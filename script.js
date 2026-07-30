@@ -184,7 +184,7 @@ function detectarFruta(){
                 posicionOcupada = true;
             }
             colas.forEach((cola, indice) => {
-                if (posicionY === acoordenadas[indice + 1].y && posicionX === coordenadas[indice + 1].x) {
+                if (posicionY === coordenadas[indice + 1].y && posicionX === coordenadas[indice + 1].x) {
                         posicionOcupada = true;
                 }
             })
