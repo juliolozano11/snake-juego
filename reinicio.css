@@ -1,0 +1,101 @@
+.campoPerdido {
+    position: absolute;
+    inset: 0;
+
+    display: none;
+
+    background-color: rgb(0, 0, 0);
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap: 20px;
+    padding: 20px;
+
+    box-sizing: border-box;
+    overflow: hidden;
+
+    z-index: 10;
+}
+
+.imagenPerdido {
+    width: min(80%, 550px);
+    max-height: 45vh;
+
+    object-fit: contain;
+    object-position: center;
+
+    display: block;
+
+    image-rendering: pixelated;
+}
+
+
+.campoPerdido h1 {
+    margin: 0;
+
+    color: #33ff33;
+
+    font-family: 'Courier New', Courier, monospace;
+    font-size: clamp(35px, 8vw, 90px);
+
+    text-align: center;
+    letter-spacing: clamp(3px, 1vw, 8px);
+
+    text-shadow:
+        3px 3px 0 #005500,
+        0 0 10px #33ff33;
+
+    animation: parpadeo 1s infinite;
+}
+
+
+.botonReinicio {
+    width: 80px;
+    height: 80px;
+
+    flex-shrink: 0;
+
+    background-color: #111111;
+
+    border: 3px solid #33ff33;
+    border-radius: 5px;
+
+    color: #33ff33;
+
+    font-size: 45px;
+    font-family: 'Courier New', Courier, monospace;
+
+    cursor: pointer;
+
+    box-shadow:
+        inset 0 0 10px #005500,
+        0 0 10px #33ff33;
+
+    transition: 0.2s;
+}
+
+
+.botonReinicio:hover {
+    background-color: #33ff33;
+    color: black;
+
+    transform: scale(1.1);
+
+    box-shadow:
+        0 0 20px #33ff33;
+}
+
+
+@keyframes parpadeo {
+    0%,
+    50% {
+        opacity: 1;
+    }
+
+    51%,
+    100% {
+        opacity: 0.5;
+    }
+}

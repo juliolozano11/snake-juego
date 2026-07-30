@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="reinicio.css">
+    <link rel="stylesheet" href="opciones.css">
+    <title>Snake</title>
+</head>
+<body>
+    <div class="contenedor-padre">
+        <header class="opciones">
+            <input class="selectorColor" type="color" value="#038218">
+            <select class="comida">
+                <option value="manzana" class="manzana">🍎</option>
+                <option value="pera" class="pera">🍐</option>
+                <option value="naranja" class="naranja">🐭</option>
+                <option value="sandia" class="sandia">🍉</option>
+                <option value="guineo" class="guineo">🍌</option>
+            </select>
+            <div>
+                <h3 class="titulo nota">🍎</h3> 
+                <input class="puntaje colorInput" type="text" placeholder= '0' value="0" disabled>
+            </div>
+            <div>
+                <h3 class="titulo">🏆</h3> 
+                <input class="record colorInput" type="text" placeholder= '0' value="0" disabled>
+            </div>
+            <div>
+                <h3 class="titulo">💀</h3> 
+                <input class="muerte colorInput" type="text" placeholder= '0' value="0" disabled>
+            </div>
+            <button class="pausa">⏸</button>
+        </header>
+        <div class="campoJuego">
+            <div class="serpiente">
+                <div class="cabeza" id="0"></div>
+
+            </div>
+        </div>
+        <div class="campoPerdido" hidden>
+            <img
+                class="imagenPerdido"
+                src="./img/muerteManzanaAutokill.png"
+                alt="Serpiente derrotada"
+            >
+            <h1>GAME OVER</h1>
+            <button class="botonReinicio">↻</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
