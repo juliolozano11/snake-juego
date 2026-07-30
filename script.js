@@ -334,6 +334,9 @@ function cambiarColor(e){
         cola.style.backgroundColor = e.target.value;
     })
 
+    pausa.style.borderColor = e.target.value;
+    pausa.style.color = e.target.value;
+
     comida.style.borderColor = e.target.value;
 }
 
