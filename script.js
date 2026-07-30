@@ -221,36 +221,36 @@ function perdida(razon){
 
     if(razon === 'autokill'){
         if(elementoFruta === '🍎'){
-            imagenPerdido.src = "./img/muerteManzanaAutokill.png";
+            imagenPerdido.src = "./img/muertemanzanaautokill.png";
         }
         if(elementoFruta === '🍐'){
-            imagenPerdido.src = "./img/muertePeraAutokill.png";
+            imagenPerdido.src = "./img/muerteperaautokill.png";
         }
         if(elementoFruta === '🐭'){
-            imagenPerdido.src = "./img/muerteRataAutokill.png";
+            imagenPerdido.src = "./img/muerterataautokill.png";
         }
         if(elementoFruta === '🍉'){
-            imagenPerdido.src = "./img/muerteSandiaAutokill.png";
+            imagenPerdido.src = "./img/muertesandiaautokill.png";
         }
         if(elementoFruta === '🍌'){
-            imagenPerdido.src = "./img/muerteGuineoAutokill.png";
+            imagenPerdido.src = "./img/muerteguineoautokill.png";
         }
     }
     if(razon === 'choque'){
         if(elementoFruta === '🍎'){
-            imagenPerdido.src = "./img/muerteChoqueManzana.png";
+            imagenPerdido.src = "./img/muertechoquemanzana.png";
         }
         if(elementoFruta === '🍐'){
-            imagenPerdido.src = "./img/muerteChoquePera.png";
+            imagenPerdido.src = "./img/muertechoquepera.png";
         }
         if(elementoFruta === '🐭'){
-            imagenPerdido.src = "./img/muerteChoqueRata.png";
+            imagenPerdido.src = "./img/muertechoquerata.png";
         }
         if(elementoFruta === '🍉'){
-            imagenPerdido.src = "./img/muerteChoqueSandia.png";
+            imagenPerdido.src = "./img/muertechoquesandia.png";
         }
         if(elementoFruta === '🍌'){
-            imagenPerdido.src = "./img/muerteChoqueGuineo.png";
+            imagenPerdido.src = "./img/muertechoqueguineo.png";
         }
     }
 
