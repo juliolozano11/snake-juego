@@ -62,7 +62,7 @@ function detectarInputs(e){
         return
     }
 
-    if (e.code === 'Space') {
+    if (e.code === 'Space' && campo.style.display !== 'none') {
         pausarJuego(e);
     }
 }
