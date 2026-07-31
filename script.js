@@ -341,6 +341,7 @@ function cambiarColor(e){
 }
 
 function cambiarFruta(e){
+    comida.blur();
     //establecer los valores que introducire en el textcontext
     const frutas = {
         manzana: "🍎",
