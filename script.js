@@ -12,8 +12,10 @@ const selectorColor = document.querySelector('.selectorColor');
 const comida = document.querySelector('.comida');
 const nota = document.querySelector('.nota');
 const imagenPerdido = document.querySelector('.imagenPerdido');
-
-const campoPerdido = document.querySelector('.campoPerdido');
+const sonidos = {
+    musica: new Audio('./audio/juego.mp3'),
+    comer: new Audio('./audio/comer.wav')
+};
 
 
 let izquierda = 0
@@ -59,6 +61,13 @@ function detectarInputs(e){
     
     if(teclas.includes(e.key)){
         direccion = e.key;
+        sonidos.musica.loop = true;
+        sonidos.musica.volume = 0.1;
+        if (sonidos.musica.paused) {
+            sonidos.musica.play().catch(error => {
+                console.error('No se pudo reproducir la música:', error);
+            });
+        }
         return
     }
 
@@ -205,6 +214,10 @@ function comerFruta(){
     let mPY = parseInt(fruta.style.top);
     
     if(sPX === mPX && sPY === mPY){
+
+        sonidos.comer.volume = 0.2;
+        reproducirSonido('comer');
+        
         puntaje++;
         campo.removeChild(fruta);
         pantalla.value = puntaje;
@@ -389,7 +402,20 @@ function generarCola(){
 
     serpiente.appendChild(cola);
 }
+function reproducirSonido(nombre) {
+    const audio = sonidos[nombre];
 
+    if (!audio) {
+        console.error(`El sonido "${nombre}" no existe`);
+        return;
+    }
+
+    audio.currentTime = 0;
+
+    audio.play().catch(error => {
+        console.error(`No se pudo reproducir "${nombre}":`, error);
+    });
+}
 
 
 
