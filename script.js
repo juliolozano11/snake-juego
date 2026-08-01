@@ -17,6 +17,8 @@ const sonidos = {
     comer: new Audio('./audio/comer.wav')
 };
 
+
+
 let izquierda = 0
 let arriba = 0;
 let puntaje = 0;
@@ -231,36 +233,36 @@ function perdida(razon){
 
     if(razon === 'autokill'){
         if(elementoFruta === '🍎'){
-            imagenPerdido.src = "./img/muertemanzanaautokill.png";
+            imagenPerdido.src = "./img/muertemanzanaautokill.webp";
         }
         if(elementoFruta === '🍐'){
-            imagenPerdido.src = "./img/muerteperaautokill.png";
+            imagenPerdido.src = "./img/muerteperaautokill.webp";
         }
         if(elementoFruta === '🐭'){
-            imagenPerdido.src = "./img/muerterataautokill.png";
+            imagenPerdido.src = "./img/muerterataautokill.webp";
         }
         if(elementoFruta === '🍉'){
-            imagenPerdido.src = "./img/muertesandiaautokill.png";
+            imagenPerdido.src = "./img/muertesandiaautokill.webp";
         }
         if(elementoFruta === '🍌'){
-            imagenPerdido.src = "./img/muerteguineoautokill.png";
+            imagenPerdido.src = "./img/muerteguineoautokill.webp";
         }
     }
     if(razon === 'choque'){
         if(elementoFruta === '🍎'){
-            imagenPerdido.src = "./img/muertechoquemanzana.png";
+            imagenPerdido.src = "./img/muertechoquemanzana.webp";
         }
         if(elementoFruta === '🍐'){
-            imagenPerdido.src = "./img/muertechoquepera.png";
+            imagenPerdido.src = "./img/muertechoquepera.webp";
         }
         if(elementoFruta === '🐭'){
-            imagenPerdido.src = "./img/muertechoquerata.png";
+            imagenPerdido.src = "./img/muertechoquerata.webp";
         }
         if(elementoFruta === '🍉'){
-            imagenPerdido.src = "./img/muertechoquesandia.png";
+            imagenPerdido.src = "./img/muertechoquesandia.webp";
         }
         if(elementoFruta === '🍌'){
-            imagenPerdido.src = "./img/muertechoqueguineo.png";
+            imagenPerdido.src = "./img/muertechoqueguineo.webp";
         }
     }
 
