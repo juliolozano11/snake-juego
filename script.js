@@ -16,7 +16,6 @@ const sonidos = {
     musica: new Audio('./audio/juego.mp3'),
     comer: new Audio('./audio/comer.wav')
 };
-const campoPerdido = document.querySelector('.campoPerdido');
 
 
 
@@ -66,7 +65,7 @@ function detectarInputs(e){
         direccion = e.key;
         sonidos.musica.loop = true;
         sonidos.musica.volume = 0.1;
-        if (sonidos.musica.paused) {
+        if (sonidos.musica.paused && pausa.textContent !== '▶') {
             sonidos.musica.play().catch(error => {
                 console.error('No se pudo reproducir la música:', error);
             });
@@ -103,8 +102,6 @@ function mover(direccion){
         perdida('choque');
         return; 
     }
-
-    
 
     if (direccion === 'ArrowUp' || direccion === 'w' || direccion === 'W') {
         moverArriba();
@@ -311,8 +308,10 @@ function reinicio(e){
 }
 
 function pausarJuego(e){
+
     if(pausa.textContent === '⏸'){
         clearInterval(bucleIntervalo);
+        sonidos.musica.pause();
         pausa.textContent = '▶';
         pausa.style.backgroundColor = '#33ff33'
         pausa.style.color = 'black';
@@ -320,6 +319,7 @@ function pausarJuego(e){
     }
     if(pausa.textContent === '▶'){
         iniciarBucle();
+        sonidos.musica.play();
         pausa.textContent = '⏸';
         pausa.style.backgroundColor = '#111111'
         pausa.style.color = '#33ff33';
