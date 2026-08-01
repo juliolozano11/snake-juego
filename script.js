@@ -18,6 +18,7 @@ const sonidos = {
 };
 
 
+
 let izquierda = 0
 let arriba = 0;
 let puntaje = 0;
@@ -60,6 +61,7 @@ function detectarInputs(e){
     const teclas = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'w', 's', 'a', 'd'];
     
     if(teclas.includes(e.key)){
+        
         direccion = e.key;
         sonidos.musica.loop = true;
         sonidos.musica.volume = 0.1;
@@ -214,10 +216,9 @@ function comerFruta(){
     let mPY = parseInt(fruta.style.top);
     
     if(sPX === mPX && sPY === mPY){
-
+        
         sonidos.comer.volume = 0.2;
         reproducirSonido('comer');
-        
         puntaje++;
         campo.removeChild(fruta);
         pantalla.value = puntaje;
@@ -402,6 +403,7 @@ function generarCola(){
 
     serpiente.appendChild(cola);
 }
+
 function reproducirSonido(nombre) {
     const audio = sonidos[nombre];
 
@@ -416,6 +418,3 @@ function reproducirSonido(nombre) {
         console.error(`No se pudo reproducir "${nombre}":`, error);
     });
 }
-
-
-
