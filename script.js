@@ -17,8 +17,6 @@ const sonidos = {
     comer: new Audio('./audio/comer.wav')
 };
 
-
-
 let izquierda = 0
 let arriba = 0;
 let puntaje = 0;
