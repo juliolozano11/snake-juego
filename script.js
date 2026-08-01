@@ -16,6 +16,7 @@ const sonidos = {
     musica: new Audio('./audio/juego.mp3'),
     comer: new Audio('./audio/comer.wav')
 };
+const campoPerdido = document.querySelector('.campoPerdido');
 
 
 
