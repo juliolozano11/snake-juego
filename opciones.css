@@ -23,7 +23,7 @@ header h3 {
     
 }
 
-.puntaje, .record, .muerte{
+.colorInput{
     width: 4ch; 
     text-align: right;
     background-color: #111111;
@@ -36,20 +36,8 @@ header h3 {
     outline: none;
 }
 
-.puntaje::-webkit-outer-spin-button,
-.puntaje::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-.record::-webkit-outer-spin-button,
-.record::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-.muerte::-webkit-outer-spin-button,
-.muerte::-webkit-inner-spin-button {
+.colorInput::-webkit-outer-spin-button,
+.colorInput::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
