@@ -5,7 +5,7 @@ const campo = document.querySelector('.campoJuego');
 const campoPerdida = document.querySelector('.campoPerdido');
 const campoVictoria = document.querySelector('.campoGanado');
 const pausa = document.querySelector('.pausa');
-const botonReinicio = document.querySelector('.botonReinicio');
+const botonReinicio = document.querySelectorAll('.botonReinicio');
 const pantalla = document.querySelector('.puntaje');
 const record = document.querySelector('.record');
 const muertes = document.querySelector('.muerte');
@@ -40,7 +40,7 @@ let coordenadas = [
         'y': 0
     }
 ];
-let direccion = 'ArrowRight';
+let direccion;
 let bucleIntervalo;
 let colorSerpiente;
 let elementoFruta;
@@ -55,8 +55,9 @@ function eventosGenerados(){
         let obtenerMuerte = localStorage.getItem('muerteLS');
         record.value = obtenerRecord;
         muertes.value = obtenerMuerte;
+
     });
-    botonReinicio.addEventListener('click', reinicio);
+    botonReinicio.forEach(btnReinicio => btnReinicio.addEventListener('click', reinicio));
     pausa.addEventListener('click', pausarJuego);
     selectorColor.addEventListener('input', cambiarColor);
     comida.addEventListener('change', cambiarFruta);
@@ -99,7 +100,7 @@ function detectarInputs(e){
     if (e.code === 'Space' && campo.style.display !== 'none') {
         pausarJuego(e);
     }
-    if (e.code === 'Space' && campoPerdida.style.display === 'flex') {
+    if (e.code === 'Space' && (campoPerdida.style.display === 'flex' || campoVictoria.style.display === 'flex')) {
         reinicio(e);
     }
 }
@@ -119,13 +120,15 @@ function iniciarBucle(){
 function mover(direccion){
     const limiteDerecho = campo.clientWidth - 50;
     const limiteInferior = campo.clientHeight - 80;
+    //protege que la funcion se ejecute cuando el campo este oculto
+    if (getComputedStyle(campo).display === 'none') {
+        return;
+    }
 
     sonidos.musica.loop = true;
     sonidos.musica.volume = 0.2;
     if (sonidos.musica.paused && pausa.textContent !== '▶') {
-        sonidos.musica.play().catch(error => {
-            console.error('No se pudo reproducir la música:', error);
-        });
+        sonidos.musica.play();
     }
     
     if (
@@ -325,8 +328,6 @@ function perdida(razon){
 }
 
 function reinicio(e){
-    sonidos.musica.play();
-
     sonidos.muerte1.pause();
     sonidos.muerte1.currentTime = 0;
     
@@ -336,11 +337,14 @@ function reinicio(e){
     sonidos.gameOverVoice.pause();
     sonidos.gameOverVoice.currentTime = 0;
 
+    sonidos.ganar.pause();
+    sonidos.ganar.currentTime = 0;
+
 
     izquierda = 0
     arriba = 0;
     puntaje = 0;
-    direccion = 'ArrowRight';
+    direccion = null;
 
     const colasViejas = document.querySelectorAll('.cola');
     colasViejas.forEach(cola => cola.remove());
@@ -364,6 +368,7 @@ function reinicio(e){
     pantalla.value = 0;
     campo.style.display = 'flex';
     campoPerdida.style.display = 'none';
+    campoVictoria.style.display = 'none';
 
     iniciarBucle();
 }
@@ -482,17 +487,30 @@ function reproducirSonido(nombre) {
     });
 }
 
-function victoriaFuncion(){
+function victoriaFuncion() {
     clearInterval(bucleIntervalo);
 
+    sonidos.musica.pause();
+
+    sonidos.muerte1.pause();
+    sonidos.muerte1.currentTime = 0;
+    sonidos.muerte1.onended = null;
+
+    sonidos.muerte2.pause();
+    sonidos.muerte2.currentTime = 0;
+    sonidos.muerte2.onended = null;
+
+    sonidos.gameOverVoice.pause();
+    sonidos.gameOverVoice.currentTime = 0;
+
     campo.style.display = 'none';
+    campoPerdida.style.display = 'none';
     campoVictoria.style.display = 'flex';
 
-    
     sonidos.ganar.volume = 0.2;
     reproducirSonido('ganar');
 
     victoria++;
     victorias.textContent = victoria;
-    agregarLocalStorage('victoriasLS' , victoria);
+    agregarLocalStorage('victoriasLS', victoria);
 }
