@@ -3,11 +3,13 @@ const cabeza = document.querySelector('.cabeza') || null;
 let fruta = document.querySelector('.manzana') || null;
 const campo = document.querySelector('.campoJuego');
 const campoPerdida = document.querySelector('.campoPerdido');
+const campoVictoria = document.querySelector('.campoGanado');
 const pausa = document.querySelector('.pausa');
 const botonReinicio = document.querySelector('.botonReinicio');
 const pantalla = document.querySelector('.puntaje');
 const record = document.querySelector('.record');
 const muertes = document.querySelector('.muerte');
+const victorias = document.querySelector('.victorias');
 const selectorColor = document.querySelector('.selectorColor');
 const comida = document.querySelector('.comida');
 const nota = document.querySelector('.nota');
@@ -18,6 +20,7 @@ const sonidos = {
     muerte1: new Audio('./audio/fallo1.mp3'),
     muerte2: new Audio('./audio/fallo2.mp3'),
     gameOverVoice: new Audio('./audio/gameovervoice.mp3'),
+    ganar: new Audio('./audio/winner.mp3')
 };
 
 let tecladoBloqueo = false;
@@ -28,14 +31,16 @@ let derecha;
 let abajo;
 
 let puntaje = 0;
-let direccion = 'ArrowRight';
 let muerte = 0
+let victoria = 0;
+
 let coordenadas = [
     {
         'x': 0,
         'y': 0
     }
 ];
+let direccion = 'ArrowRight';
 let bucleIntervalo;
 let colorSerpiente;
 let elementoFruta;
@@ -212,7 +217,7 @@ function detectarFruta(){
     const puntajeMaximo = (columnas * filas) - 1;
 
     if(Number(pantalla.value) === puntajeMaximo){
-        victoria();
+        victoriaFuncion();
         return;
     }
 
@@ -335,7 +340,7 @@ function reinicio(e){
     izquierda = 0
     arriba = 0;
     puntaje = 0;
-    direccion = 'ArrowRight';
+    direccion = null;
 
     const colasViejas = document.querySelectorAll('.cola');
     colasViejas.forEach(cola => cola.remove());
@@ -475,4 +480,19 @@ function reproducirSonido(nombre) {
     audio.play().catch(error => {
         console.error(`No se pudo reproducir "${nombre}":`, error);
     });
+}
+
+function victoriaFuncion(){
+    clearInterval(bucleIntervalo);
+
+    campo.style.display = 'none';
+    campoVictoria.style.display = 'flex';
+
+    
+    sonidos.ganar.volume = 0.2;
+    reproducirSonido('ganar');
+
+    victoria++;
+    victorias.textContent = victoria;
+    agregarLocalStorage('victoriasLS' , victoria);
 }
