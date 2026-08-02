@@ -20,12 +20,15 @@ const sonidos = {
     gameOverVoice: new Audio('./audio/gameovervoice.mp3'),
 };
 
-
+let tecladoBloqueo = false;
 
 let izquierda = 0
 let arriba = 0;
+let derecha;
+let abajo;
+
 let puntaje = 0;
-let direccion;
+let direccion = 'ArrowRight';
 let muerte = 0
 let coordenadas = [
     {
@@ -61,17 +64,29 @@ function eventosGenerados(){
 
 // funciones
 function detectarInputs(e){
+    const colas = document.querySelector('.cola');
+
     const teclas = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'w', 's', 'a', 'd'];
     
+    if(!teclas.includes(e.key) && e.code !== 'Space'){return}
     if(teclas.includes(e.key)){
-        
-        direccion = e.key;
-        sonidos.musica.loop = true;
-        sonidos.musica.volume = 0.2;
-        if (sonidos.musica.paused && pausa.textContent !== '▶') {
-            sonidos.musica.play().catch(error => {
-                console.error('No se pudo reproducir la música:', error);
-            });
+        if(tecladoBloqueo){
+            return;
+        }
+        else if(direccion === 'ArrowRight' && e.key === 'ArrowLeft' && colas){
+            direccion = 'ArrowRight';
+        }
+        else if(direccion === 'ArrowLeft' && e.key === 'ArrowRight' && colas){
+            direccion = 'ArrowLeft';
+        }
+        else if(direccion === 'ArrowUp' && e.key === 'ArrowDown' && colas){
+            direccion = 'ArrowUp';
+        }
+        else if(direccion === 'ArrowDown' && e.key === 'ArrowUp' && colas){
+            direccion = 'ArrowDown';
+        }
+        else{
+            direccion = e.key;
         }
         return
     }
@@ -99,6 +114,15 @@ function iniciarBucle(){
 function mover(direccion){
     const limiteDerecho = campo.clientWidth - 50;
     const limiteInferior = campo.clientHeight - 80;
+
+    sonidos.musica.loop = true;
+    sonidos.musica.volume = 0.2;
+    if (sonidos.musica.paused && pausa.textContent !== '▶') {
+        sonidos.musica.play().catch(error => {
+            console.error('No se pudo reproducir la música:', error);
+        });
+    }
+    
     if (
     (direccion === 'ArrowUp' || direccion === 'w' || direccion === 'W') && arriba === 0 ||
     (direccion === 'ArrowDown' || direccion === 's' || direccion === 'S') && arriba >= limiteInferior ||
@@ -110,6 +134,7 @@ function mover(direccion){
     }
 
     if (direccion === 'ArrowUp' || direccion === 'w' || direccion === 'W') {
+
         moverArriba();
     } 
     else if (direccion === 'ArrowDown' || direccion === 's' || direccion === 'S') {
@@ -128,6 +153,7 @@ function mover(direccion){
 }
 
 function moverIzquierda(){
+    derecha = false;
     izquierda -= 50;
     cabeza.style.left = `${izquierda}px`;
     guardarPosiciones(izquierda, arriba);
@@ -135,18 +161,21 @@ function moverIzquierda(){
 }
 
 function moverDerecha(){
+    derecha= true;
     izquierda += 50;
     cabeza.style.left = `${izquierda}px`;
     guardarPosiciones(izquierda, arriba);
 }
 
 function moverArriba(){
+    abajo = false;
     arriba -= 50;
     cabeza.style.top = `${arriba}px`;
     guardarPosiciones(izquierda, arriba);
 }    
 
 function moverAbajo(){
+    abajo = true
     arriba += 50;
     cabeza.style.top = `${arriba}px`;
     guardarPosiciones(izquierda, arriba);
@@ -292,6 +321,17 @@ function perdida(razon){
 
 function reinicio(e){
     sonidos.musica.play();
+
+    sonidos.muerte1.pause();
+    sonidos.muerte1.currentTime = 0;
+    
+    sonidos.muerte2.pause();
+    sonidos.muerte2.currentTime = 0;
+    
+    sonidos.gameOverVoice.pause();
+    sonidos.gameOverVoice.currentTime = 0;
+
+
     izquierda = 0
     arriba = 0;
     puntaje = 0;
@@ -324,9 +364,9 @@ function reinicio(e){
 }
 
 function pausarJuego(e){
-
     if(pausa.textContent === '⏸'){
         clearInterval(bucleIntervalo);
+        tecladoBloqueo = true;
         sonidos.musica.pause();
         pausa.textContent = '▶';
         pausa.style.backgroundColor = '#33ff33'
@@ -335,6 +375,7 @@ function pausarJuego(e){
     }
     if(pausa.textContent === '▶'){
         iniciarBucle();
+        tecladoBloqueo = false;
         sonidos.musica.play();
         pausa.textContent = '⏸';
         pausa.style.backgroundColor = '#111111'
