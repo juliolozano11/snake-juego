@@ -328,6 +328,8 @@ function perdida(razon){
 }
 
 function reinicio(e){
+    sonidos.musica.currentTime = 0;
+    
     sonidos.muerte1.pause();
     sonidos.muerte1.currentTime = 0;
     
