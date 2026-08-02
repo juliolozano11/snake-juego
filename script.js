@@ -14,7 +14,10 @@ const nota = document.querySelector('.nota');
 const imagenPerdido = document.querySelector('.imagenPerdido');
 const sonidos = {
     musica: new Audio('./audio/juego.mp3'),
-    comer: new Audio('./audio/comer.wav')
+    comer: new Audio('./audio/comer.wav'),
+    muerte1: new Audio('./audio/fallo1.mp3'),
+    muerte2: new Audio('./audio/fallo2.mp3'),
+    gameOverVoice: new Audio('./audio/gameovervoice.mp3'),
 };
 
 
@@ -64,7 +67,7 @@ function detectarInputs(e){
         
         direccion = e.key;
         sonidos.musica.loop = true;
-        sonidos.musica.volume = 0.1;
+        sonidos.musica.volume = 0.2;
         if (sonidos.musica.paused && pausa.textContent !== '▶') {
             sonidos.musica.play().catch(error => {
                 console.error('No se pudo reproducir la música:', error);
@@ -75,6 +78,9 @@ function detectarInputs(e){
 
     if (e.code === 'Space' && campo.style.display !== 'none') {
         pausarJuego(e);
+    }
+    if (e.code === 'Space' && campoPerdida.style.display === 'flex') {
+        reinicio(e);
     }
 }
 
@@ -232,6 +238,11 @@ function perdida(razon){
     clearInterval(bucleIntervalo);
 
     if(razon === 'autokill'){
+        sonidos.musica.pause();
+        sonidos.muerte1.volume = 0.2;
+        reproducirSonido('muerte1');
+        sonidos.gameOverVoice.volume = 0.5;
+        sonidos.muerte1.onended = () => reproducirSonido('gameOverVoice');
         if(elementoFruta === '🍎'){
             imagenPerdido.src = "./img/muertemanzanaautokill.webp";
         }
@@ -249,6 +260,11 @@ function perdida(razon){
         }
     }
     if(razon === 'choque'){
+        sonidos.musica.pause();
+        sonidos.muerte2.volume = 0.2;
+        sonidos.gameOverVoice.volume = 0.2;
+        reproducirSonido('muerte2');
+        sonidos.muerte2.onended = () => reproducirSonido('gameOverVoice');
         if(elementoFruta === '🍎'){
             imagenPerdido.src = "./img/muertechoquemanzana.webp";
         }
@@ -275,7 +291,7 @@ function perdida(razon){
 }
 
 function reinicio(e){
-
+    sonidos.musica.play();
     izquierda = 0
     arriba = 0;
     puntaje = 0;
