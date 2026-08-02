@@ -31,21 +31,33 @@
                 <h3 class="titulo">💀</h3> 
                 <input class="muerte colorInput" type="text" placeholder= '0' value="0" disabled>
             </div>
+            <div>
+                <h3 class="titulo">👑</h3> 
+                <input class="victorias colorInput" type="text" placeholder= '0' value="0" disabled>
+            </div>
             <button class="pausa">⏸</button>
         </header>
         <div class="campoJuego">
             <div class="serpiente">
                 <div class="cabeza" id="0"></div>
-
             </div>
         </div>
         <div class="campoPerdido" hidden>
             <img
                 class="imagenPerdido"
-                src="./img/muertemanzanaautokill.png"
+                src="./img/muertemanzanaautokill.webp"
                 alt="Serpiente derrotada"
             >
             <h1>GAME OVER</h1>
+            <button class="botonReinicio">↻</button>
+        </div>
+        <div class="campoGanado" hidden>
+            <img
+                class="imagenGanador"
+                src="./img/ganador.png"
+                alt="Serpiente Triunfante"
+            >
+            <h1>Victoria</h1>
             <button class="botonReinicio">↻</button>
         </div>
     </div>
