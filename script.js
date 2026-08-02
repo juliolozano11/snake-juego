@@ -340,7 +340,7 @@ function reinicio(e){
     izquierda = 0
     arriba = 0;
     puntaje = 0;
-    direccion = null;
+    direccion = 'ArrowRight';
 
     const colasViejas = document.querySelectorAll('.cola');
     colasViejas.forEach(cola => cola.remove());
