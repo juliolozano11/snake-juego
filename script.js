@@ -60,7 +60,7 @@ function eventosGenerados(){
     botonReinicio.forEach(btnReinicio => btnReinicio.addEventListener('click', reinicio));
     pausa.addEventListener('click', (e) => {
         e.currentTarget.blur();
-        pausarJuego
+        pausarJuego(e);
     });
     selectorColor.addEventListener('input', cambiarColor);
     comida.addEventListener('change', cambiarFruta);
