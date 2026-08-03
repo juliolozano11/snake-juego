@@ -58,7 +58,10 @@ function eventosGenerados(){
 
     });
     botonReinicio.forEach(btnReinicio => btnReinicio.addEventListener('click', reinicio));
-    pausa.addEventListener('click', pausarJuego);
+    pausa.addEventListener('click', (e) => {
+        e.currentTarget.blur();
+        pausarJuego
+    });
     selectorColor.addEventListener('input', cambiarColor);
     comida.addEventListener('change', cambiarFruta);
     cambiarFruta({
@@ -75,6 +78,7 @@ function detectarInputs(e){
     const teclas = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'w', 's', 'a', 'd'];
     
     if(!teclas.includes(e.key) && e.code !== 'Space'){return}
+
     if(teclas.includes(e.key)){
         if(tecladoBloqueo){
             return;
@@ -98,9 +102,15 @@ function detectarInputs(e){
     }
 
     if (e.code === 'Space' && campo.style.display !== 'none') {
+        e.preventDefault();
+        if (e.repeat) {
+            return;
+        }
         pausarJuego(e);
     }
+
     if (e.code === 'Space' && (campoPerdida.style.display === 'flex' || campoVictoria.style.display === 'flex')) {
+        e.preventDefault();
         reinicio(e);
     }
 }
@@ -329,7 +339,7 @@ function perdida(razon){
 
 function reinicio(e){
     sonidos.musica.currentTime = 0;
-    
+
     sonidos.muerte1.pause();
     sonidos.muerte1.currentTime = 0;
     
