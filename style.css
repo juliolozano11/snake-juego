@@ -60,7 +60,7 @@ header{
     justify-content: center;
     align-items: center;
 
-    font-size: var(--area);
+    font-size: 40px;
 
     position: absolute;
     z-index: 1;
