@@ -130,8 +130,8 @@ function iniciarBucle(){
 
 
 function mover(direccion){
-    const limiteDerecho = campo.clientWidth - area;
-    const limiteInferior = campo.clientHeight - area;
+    const limiteDerecho = Math.floor(campo.clientWidth / area) * area - area;
+    const limiteInferior = Math.floor(campo.clientHeight / area) * area - area;
     //protege que la funcion se ejecute cuando el campo este oculto
     if (getComputedStyle(campo).display === 'none') {
         return;
