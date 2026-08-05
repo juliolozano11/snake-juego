@@ -15,11 +15,6 @@ body{
     width: 100vw;
 }
 
-header{
-    width: 100vw;
-    height: 10vh;
-}
-
 .campoJuego{
     background-color: rgb(41, 39, 39);
     width: 100vw;
