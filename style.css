@@ -1,50 +1,70 @@
- * {
-    box - sizing: border - box;
+* {
+    box-sizing: border-box;
 }
-: root {
+
+:root {
     --area: 50px;
 }
+
 body {
     margin: 0;
 }
-.contenedor - padre {
+
+.contenedor-padre {
     height: 100vh;
     width: 100vw;
 }
+
 header {
     width: 100vw;
     height: 10vh;
 }
+
 .campoJuego {
-    background - color: rgb(41, 39, 39);
+    background-color: rgb(41, 39, 39);
     width: 100vw;
-    max - width: 7680px;
     height: 90vh;
-    max - height: 4800px;
+
     display: grid;
-    grid - template - rows: repeat(auto - fill, var(--area));
-    grid - template - columns: repeat(auto - fill, var(--area));
-    box - sizing: border - box;
+    grid-template-rows: repeat(auto-fill, var(--area));
+    grid-template-columns: repeat(auto-fill, var(--area));
+
+    box-sizing: border-box;
     overflow: hidden;
     position: relative;
 }
-.cabeza, .cola {
+
+.cabeza,
+.cola {
     width: var(--area);
     height: var(--area);
-    background - color:  # 038218;
-    border - radius: 30 % ;
+
+    background-color: #038218;
+
+    border-radius: 30%;
     position: absolute;
-    top: 0px;
-    left: 0px;
-    z - index: 2;
+
+    top: 0;
+    left: 0;
+
+    z-index: 2;
 }
-.manzana, .pera, .naranja, .sandia, .guineo {
+
+.manzana,
+.pera,
+.naranja,
+.sandia,
+.guineo {
+
     width: var(--area);
     height: var(--area);
+
     display: flex;
-    justify - content: center;
-    align - items: center;
-    font - size: 40px;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 40px;
+
     position: absolute;
-    z - index: 1;
+    z-index: 1;
 }
