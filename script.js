@@ -23,12 +23,10 @@ const sonidos = {
     ganar: new Audio('./audio/winner.mp3')
 };
 
-let tecladoBloqueo = false;
+let area = 50;
 
 let izquierda = 0
 let arriba = 0;
-let derecha;
-let abajo;
 
 let puntaje = 0;
 let muerte = 0
@@ -46,8 +44,8 @@ let colorSerpiente;
 let elementoFruta;
 
 // eventos
-
-eventosGenerados()
+actualizarArea();
+eventosGenerados();
 function eventosGenerados(){
     document.addEventListener('keydown', detectarInputs);
     document.addEventListener('DOMContentLoaded', () => {
@@ -67,6 +65,7 @@ function eventosGenerados(){
     cambiarFruta({
         target: comida
     });
+    window.addEventListener("resize", actualizarArea);
     detectarFruta();
     iniciarBucle();
 }
@@ -125,8 +124,8 @@ function iniciarBucle(){
 
 
 function mover(direccion){
-    const limiteDerecho = campo.clientWidth - 50;
-    const limiteInferior = campo.clientHeight - 80;
+    const limiteDerecho = campo.clientWidth - area;
+    const limiteInferior = campo.clientHeight - (area+30);
     //protege que la funcion se ejecute cuando el campo este oculto
     if (getComputedStyle(campo).display === 'none') {
         return;
@@ -168,30 +167,26 @@ function mover(direccion){
 }
 
 function moverIzquierda(){
-    derecha = false;
-    izquierda -= 50;
+    izquierda -= area;
     cabeza.style.left = `${izquierda}px`;
     guardarPosiciones(izquierda, arriba);
 
 }
 
 function moverDerecha(){
-    derecha= true;
-    izquierda += 50;
+    izquierda += area;
     cabeza.style.left = `${izquierda}px`;
     guardarPosiciones(izquierda, arriba);
 }
 
 function moverArriba(){
-    abajo = false;
-    arriba -= 50;
+    arriba -= area;
     cabeza.style.top = `${arriba}px`;
     guardarPosiciones(izquierda, arriba);
 }    
 
 function moverAbajo(){
-    abajo = true
-    arriba += 50;
+    arriba += area;
     cabeza.style.top = `${arriba}px`;
     guardarPosiciones(izquierda, arriba);
 }
@@ -222,8 +217,8 @@ function detectarFruta(){
     
     const colas = document.querySelectorAll('.cola') || null;
     
-    const columnas = campo.clientWidth / 50;
-    const filas = campo.clientHeight / 50;
+    const columnas = campo.clientWidth / area;
+    const filas = campo.clientHeight / area;
     const puntajeMaximo = (columnas * filas) - 1;
 
     if(Number(pantalla.value) === puntajeMaximo){
@@ -237,8 +232,8 @@ function detectarFruta(){
         fruta.textContent = `${elementoFruta}`;
         do{
             posicionOcupada = false;
-            posicionX = Math.floor((Math.random() * (campo.clientWidth - 50)) / 50) * 50;
-            posicionY = Math.floor((Math.random() * (campo.clientHeight - 50)) / 50) * 50;
+            posicionX = Math.floor((Math.random() * (campo.clientWidth - area)) / area) * area;
+            posicionY = Math.floor((Math.random() * (campo.clientHeight - area)) / area) * area;
             if (posicionY === arriba && posicionX === izquierda) {
                 posicionOcupada = true;
             }
@@ -522,4 +517,8 @@ function victoriaFuncion() {
     victoria++;
     victorias.textContent = victoria;
     agregarLocalStorage('victoriasLS', victoria);
+}
+
+function actualizarArea() {
+    area = cabeza.offsetWidth;
 }
