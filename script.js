@@ -217,8 +217,8 @@ function detectarFruta(){
     
     const colas = document.querySelectorAll('.cola') || null;
     
-    const columnas = campo.clientWidth / area;
-    const filas = campo.clientHeight / area;
+    const columnas = Math.floor(campo.clientWidth / area);
+    const filas = Math.floor(campo.clientHeight / area);
     const puntajeMaximo = (columnas * filas) - 1;
 
     if(Number(pantalla.value) === puntajeMaximo){
