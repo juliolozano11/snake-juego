@@ -1,5 +1,6 @@
 header {
     width: 100%;
+    height: 10vh;
     display: flex;
     justify-content: center;
     background-color: #000000;
@@ -123,5 +124,97 @@ header h3 {
     text-align: center;
 }
 
+@media(max-width:700px){
 
+    header h3{
+        font-size:18px;
+        margin-left:5px;
+    }
+
+
+    .colorInput{
+        font-size:18px;
+        width:3ch;
+        padding:2px;
+    }
+
+
+    header div{
+        gap:0;
+    }
+
+
+    .selectorColor{
+        left:10px;
+        top:10px;
+
+        width:40px;
+        height:35px;
+    }
+
+
+    .comida{
+        left:55px;
+        top:10px;
+
+        width:55px;
+        height:35px;
+
+        font-size:24px;
+    }
+
+
+    .pausa{
+        right:10px;
+        top:10px;
+
+        width:40px;
+        height:40px;
+
+        font-size:20px;
+    }
+
+}
+
+@media(max-width:450px){
+
+    header{
+        height:12vh;
+    }
+
+
+    header h3{
+        font-size:14px;
+    }
+
+
+    .colorInput{
+        font-size:14px;
+    }
+
+
+    .selectorColor{
+        width:35px;
+        height:30px;
+    }
+
+
+    .comida{
+        left:50px;
+
+        width:45px;
+        height:30px;
+
+        font-size:20px;
+    }
+
+
+    .pausa{
+        width:35px;
+        height:35px;
+
+        font-size:18px;
+    }
+
+}
 
