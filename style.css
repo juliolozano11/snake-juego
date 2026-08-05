@@ -27,8 +27,8 @@ header{
     height: 90vh;
     max-height: 4800px;
     display: grid;
-    grid-template-rows: repeat(auto-fill, --area);
-    grid-template-columns: repeat(auto-fill, --area);
+    grid-template-rows: repeat(auto-fill, var(--area));
+    grid-template-columns: repeat(auto-fill, var(--area));
     box-sizing: border-box;
     overflow: hidden;
     position: relative;
@@ -60,7 +60,7 @@ header{
     justify-content: center;
     align-items: center;
 
-    font-size: calc(var(--area) - 10);
+    font-size: var(--area);
 
     position: absolute;
     z-index: 1;
