@@ -384,7 +384,7 @@ function reinicio(e){
 }
 
 function pausarJuego(e){
-    if(pausa.textContent === '⏸'){
+    if(pausa.textContent === 'II'){
         clearInterval(bucleIntervalo);
         tecladoBloqueo = true;
         sonidos.musica.pause();
@@ -397,7 +397,7 @@ function pausarJuego(e){
         iniciarBucle();
         tecladoBloqueo = false;
         sonidos.musica.play();
-        pausa.textContent = '⏸';
+        pausa.textContent = 'II';
         pausa.style.backgroundColor = '#111111'
         pausa.style.color = '#33ff33';
         return;
