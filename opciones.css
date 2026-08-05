@@ -1,25 +1,17 @@
-header {
-    width: 100%;
-    height: 10vh;
-    
+header{
+    width:100%;
     display:flex;
     justify-content:center;
-    align-items:center;
-    gap:10px;
-    
-    background-color: #000000;
-    border-bottom: 4px solid #33ff33;
-    padding:5px;
-    
-    position:relative;
-    
-    overflow:hidden;
+    background-color:#000;
+    border-bottom:4px solid #33ff33;
+    padding:10px 0;
+    box-shadow:0 4px 0 #005500;
 }
 
 header div{
-    display: flex;
-    align-items: center;
-    gap: 1px; 
+    display:flex;
+    align-items:center;
+    gap:1px;
 }
 
 header h3 {
@@ -118,88 +110,32 @@ header h3 {
 
 @media(max-width:700px){
 
-    header{
-        justify-content:center;
-        gap:5px;
-    }
-
-    header div{
-        transform:scale(0.85);
-        transform-origin:center;
-    }
-
     header h3{
-        font-size:20px;
-        margin-left:5px;
+        font-size:18px;
     }
 
     .colorInput{
+        font-size:18px;
         width:3ch;
-        font-size:20px;
-        padding:2px 4px;
     }
 
     .selectorColor{
         left:10px;
-        top:50%;
-        transform:translateY(-50%);
-
         width:40px;
         height:35px;
     }
 
     .comida{
         left:60px;
-        top:50%;
-        transform:translateY(-50%);
-
         width:60px;
         height:35px;
-
         font-size:25px;
     }
 
     .pausa{
         right:10px;
-        top:50%;
-        transform:translateY(-50%);
-
         width:40px;
         height:40px;
-
         font-size:22px;
     }
-
 }
-
-@media(max-width:600px){
-
-    header{
-        gap:5px;
-    }
-
-
-    header div{
-        transform:scale(.75);
-    }
-
-
-    .selectorColor{
-        width:35px;
-        height:35px;
-    }
-
-
-    .comida{
-        width:55px;
-        font-size:22px;
-    }
-
-
-    .pausa{
-        width:35px;
-        height:35px;
-        font-size:18px;
-    }
-}
-
