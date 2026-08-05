@@ -1,12 +1,19 @@
 header {
     width: 100%;
     height: 10vh;
-    display: flex;
-    justify-content: center;
+    
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+    
     background-color: #000000;
     border-bottom: 4px solid #33ff33;
-    padding: 10px 0;
-    box-shadow: 0 4px 0 #005500;
+    padding:5px;
+    
+    position:relative;
+    
+    overflow:hidden;
 }
 
 header div{
@@ -44,12 +51,8 @@ header h3 {
 }
 
 .pausa {
-    position: absolute;
-    right: 20px;
-    top: 5px;
-
-    width: 50px;
-    height: 50px;
+    width:45px;
+    height:45px;
 
     background-color: #111111;
 
@@ -61,10 +64,6 @@ header h3 {
     font-size: 25px;
 
     cursor: pointer;
-
-    box-shadow: inset 0 0 5px #005500;
-
-    transition: 0.2s;
 }
 
 .pausa:hover {
@@ -73,15 +72,10 @@ header h3 {
 }
 
 .selectorColor {
-    position: absolute;
-    left: 20px;
-    top: 10px;
-
-    width: 50px;
-    height: 40px;
+    width:45px;
+    height:40px;
 
     background-color: #111111;
-
     border: 2px solid #33ff33;
     border-radius: 5px;
 
@@ -89,20 +83,18 @@ header h3 {
 }
 
 .comida {
-    position: absolute;
-    left: 80px; 
-    top: 10px;
+    width:70px;
+    height:40px;
 
-    width: 100px;
-    height: 40px;
-    text-align: center;
-    background-color: #111111;
-    color: #33ff33;
+    text-align:center;
 
-    border: 2px solid #33ff33;
-    border-radius: 5px;
+    background:#111111;
+    color:#33ff33;
 
-    font-size: 32px;
+    border:2px solid #33ff33;
+    border-radius:5px;
+
+    font-size:28px;
 
     cursor: pointer;
     outline: none;
@@ -124,97 +116,34 @@ header h3 {
     text-align: center;
 }
 
-@media(max-width:700px){
+@media(max-width:600px){
 
-    header h3{
-        font-size:18px;
-        margin-left:5px;
-    }
-
-
-    .colorInput{
-        font-size:18px;
-        width:3ch;
-        padding:2px;
+    header{
+        gap:5px;
     }
 
 
     header div{
-        gap:0;
+        transform:scale(.75);
     }
 
 
     .selectorColor{
-        left:10px;
-        top:10px;
-
-        width:40px;
+        width:35px;
         height:35px;
     }
 
 
     .comida{
-        left:55px;
-        top:10px;
-
         width:55px;
-        height:35px;
-
-        font-size:24px;
-    }
-
-
-    .pausa{
-        right:10px;
-        top:10px;
-
-        width:40px;
-        height:40px;
-
-        font-size:20px;
-    }
-
-}
-
-@media(max-width:450px){
-
-    header{
-        height:12vh;
-    }
-
-
-    header h3{
-        font-size:14px;
-    }
-
-
-    .colorInput{
-        font-size:14px;
-    }
-
-
-    .selectorColor{
-        width:35px;
-        height:30px;
-    }
-
-
-    .comida{
-        left:50px;
-
-        width:45px;
-        height:30px;
-
-        font-size:20px;
+        font-size:22px;
     }
 
 
     .pausa{
         width:35px;
         height:35px;
-
         font-size:18px;
     }
-
 }
 
