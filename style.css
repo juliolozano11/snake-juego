@@ -3,7 +3,7 @@
 }
 
 :root{
-    --area: 50px;
+    --area: clamp(25px, 5vw, 50px);
 }
 
 body{
