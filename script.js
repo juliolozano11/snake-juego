@@ -14,6 +14,8 @@ const selectorColor = document.querySelector('.selectorColor');
 const comida = document.querySelector('.comida');
 const nota = document.querySelector('.nota');
 const imagenPerdido = document.querySelector('.imagenPerdido');
+const btnDesplazamiento = document.querySelectorAll('.desplazamientos');
+
 const sonidos = {
     musica: new Audio('./audio/juego.mp3'),
     comer: new Audio('./audio/comer.wav'),
@@ -48,6 +50,10 @@ actualizarArea();
 eventosGenerados();
 function eventosGenerados(){
     document.addEventListener('keydown', detectarInputs);
+    btnDesplazamiento.forEach(btnDesp => {
+        btnDesp.addEventListener('click', detectarInputsCelular);
+    })
+
     document.addEventListener('DOMContentLoaded', () => {
         let obtenerRecord = localStorage.getItem('recordLS');
         let obtenerMuerte = localStorage.getItem('muerteLS');
@@ -125,7 +131,7 @@ function iniciarBucle(){
 
 function mover(direccion){
     const limiteDerecho = campo.clientWidth - area;
-    const limiteInferior = campo.clientHeight - area;
+    const limiteInferior = campo.clientHeight - area*2;
     //protege que la funcion se ejecute cuando el campo este oculto
     if (getComputedStyle(campo).display === 'none') {
         return;
@@ -527,4 +533,30 @@ function actualizarArea() {
 
     cabeza.style.left = `${izquierda}px`;
     cabeza.style.top = `${arriba}px`;
+}
+
+function detectarInputsCelular(e){
+    const colas = document.querySelector('.cola');
+
+    const teclas = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'];
+    
+    if(teclas.includes(e.target.id)){
+        if(direccion === 'ArrowRight'  && e.target.id === 'ArrowLeft' && colas){
+            direccion = 'ArrowRight';
+        }
+        else if(direccion === 'ArrowLeft'  && e.target.id === 'ArrowRight' && colas){
+            direccion = 'ArrowLeft';
+        }
+        else if(direccion === 'ArrowUp'  && e.target.id === 'ArrowDown' && colas){
+            direccion = 'ArrowUp';
+        }
+        else if(direccion === 'ArrowDown' && e.target.id === 'ArrowUp' && colas){
+            direccion = 'ArrowDown';
+        }
+        else{
+            direccion = e.target.id;
+        }
+        return
+    }
+
 }
