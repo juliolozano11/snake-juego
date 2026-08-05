@@ -80,19 +80,16 @@ function detectarInputs(e){
     if(!teclas.includes(e.key) && e.code !== 'Space'){return}
 
     if(teclas.includes(e.key)){
-        if(tecladoBloqueo){
-            return;
-        }
-        else if(direccion === 'ArrowRight' && e.key === 'ArrowLeft' && colas){
+        if((direccion === 'ArrowRight' || direccion === 'd') && (e.key === 'ArrowLeft' || e.key === 'a') && colas){
             direccion = 'ArrowRight';
         }
-        else if(direccion === 'ArrowLeft' && e.key === 'ArrowRight' && colas){
+        else if((direccion === 'ArrowLeft' || direccion === 'a') && (e.key === 'ArrowRight' || e.key === 'd') && colas){
             direccion = 'ArrowLeft';
         }
-        else if(direccion === 'ArrowUp' && e.key === 'ArrowDown' && colas){
+        else if((direccion === 'ArrowUp' || direccion === 'w') && (e.key === 'ArrowDown' || e.key === 's') && colas){
             direccion = 'ArrowUp';
         }
-        else if(direccion === 'ArrowDown' && e.key === 'ArrowUp' && colas){
+        else if((direccion === 'ArrowDown' || direccion === 's') && (e.key === 'ArrowUp' || e.key === 'w') && colas){
             direccion = 'ArrowDown';
         }
         else{
