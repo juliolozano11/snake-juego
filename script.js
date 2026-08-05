@@ -521,4 +521,10 @@ function victoriaFuncion() {
 
 function actualizarArea() {
     area = cabeza.offsetWidth;
+    
+    izquierda = Math.floor(izquierda / area) * area;
+    arriba = Math.floor(arriba / area) * area;
+
+    cabeza.style.left = `${izquierda}px`;
+    cabeza.style.top = `${arriba}px`;
 }
