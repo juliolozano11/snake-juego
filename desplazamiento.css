@@ -1,0 +1,22 @@
+
+footer {
+    width: 100vw;
+    height: 5vh;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #000000;
+    border-top: 4px solid #33ff33;
+
+    box-shadow: 0 4px 0 #005500;
+}
+.desplazamientos{
+    width: 100px;
+    font-size: 20px;
+    
+    background-color: #005500;
+    border: 1px solid black;
+    color: white;
+}
