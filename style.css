@@ -23,7 +23,7 @@ header {
 .campoJuego {
     background-color: rgb(41, 39, 39);
     width: 100vw;
-    height: 90vh;
+    height: 85vh;
 
     display: grid;
     grid-template-rows: repeat(auto-fill, var(--area));
