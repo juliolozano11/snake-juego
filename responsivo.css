@@ -1,0 +1,228 @@
+/* TABLETS */
+@media (max-width: 900px) {
+    :root {
+        --area: 40px;
+    }
+
+    header h3,
+    .colorInput {
+        font-size: 20px;
+    }
+
+    .selectorColor {
+        left: 10px;
+    }
+
+    .comida {
+        left: 70px;
+        width: 80px;
+    }
+
+    .pausa {
+        right: 10px;
+    }
+}
+
+
+/* CELULARES */
+@media (max-width: 700px) {
+    :root {
+        --area: 30px;
+    }
+
+    .contenedor-padre {
+        width: 100%;
+        height: 100dvh;
+        min-height: 100dvh;
+        overflow: hidden;
+    }
+
+    header.opciones {
+        width: 100%;
+        height: 20dvh;
+
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        grid-template-rows: 50px 1fr;
+        align-items: center;
+
+        gap: 5px;
+        padding: 5px 8px;
+    }
+
+    .selectorColor,
+    .comida,
+    .pausa {
+        position: static;
+        height: 40px;
+    }
+
+    .selectorColor {
+        grid-column: 1;
+        grid-row: 1;
+        width: 100%;
+    }
+
+    .comida {
+        grid-column: 2 / 4;
+        grid-row: 1;
+        width: 100%;
+    }
+
+    .pausa {
+        grid-column: 4;
+        grid-row: 1;
+        width: 100%;
+    }
+
+    header div {
+        min-width: 0;
+        justify-content: center;
+        gap: 2px;
+    }
+
+    header div:nth-of-type(1) {
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    header div:nth-of-type(2) {
+        grid-column: 2;
+        grid-row: 2;
+    }
+
+    header div:nth-of-type(3) {
+        grid-column: 3;
+        grid-row: 2;
+    }
+
+    header div:nth-of-type(4) {
+        grid-column: 4;
+        grid-row: 2;
+    }
+
+    header h3 {
+        margin: 0;
+        font-size: clamp(16px, 5vw, 22px);
+        letter-spacing: 0;
+    }
+
+    .colorInput {
+        width: 4ch;
+        min-width: 0;
+        padding: 2px;
+
+        font-size: clamp(14px, 4vw, 19px);
+    }
+
+    .campoJuego {
+        width: 100%;
+        height: 66dvh;
+    }
+
+    footer {
+        width: 100%;
+        height: 14dvh;
+
+        gap: 8px;
+        padding: 10px;
+    }
+
+    .desplazamientos {
+        width: min(23%, 110px);
+        height: 60px;
+
+        font-size: 30px;
+
+        border: 2px solid black;
+        border-radius: 8px;
+
+        cursor: pointer;
+        touch-action: manipulation;
+    }
+
+    .campoPerdido,
+    .campoGanado {
+        width: 100%;
+        height: 100dvh;
+    }
+
+    .imagenPerdido,
+    .imagenGanador {
+        width: min(90%, 400px);
+        max-height: 40dvh;
+    }
+
+    .botonReinicio {
+        width: 65px;
+        height: 65px;
+        font-size: 38px;
+    }
+}
+
+
+/* CELULARES PEQUEÑOS */
+@media (max-width: 380px) {
+    :root {
+        --area: 25px;
+    }
+
+    header.opciones {
+        height: 22dvh;
+    }
+
+    .campoJuego {
+        height: 63dvh;
+    }
+
+    footer {
+        height: 15dvh;
+        gap: 5px;
+        padding: 6px;
+    }
+
+    header h3 {
+        font-size: 15px;
+    }
+
+    .colorInput {
+        font-size: 14px;
+    }
+
+    .desplazamientos {
+        width: 23%;
+        height: 52px;
+
+        font-size: 26px;
+    }
+}
+
+
+/* CELULARES EN HORIZONTAL */
+@media (max-height: 500px) and (orientation: landscape) {
+    :root {
+        --area: 25px;
+    }
+
+    header.opciones {
+        height: 25dvh;
+        grid-template-rows: repeat(2, 1fr);
+    }
+
+    .campoJuego {
+        height: 60dvh;
+    }
+
+    footer {
+        height: 15dvh;
+        gap: 8px;
+        padding: 4px;
+    }
+
+    .desplazamientos {
+        width: min(20%, 110px);
+        height: 42px;
+
+        font-size: 24px;
+    }
+}
