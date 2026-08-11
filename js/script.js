@@ -18,6 +18,7 @@ let arriba = 0;
 let puntaje = 0;
 let muerte = 0
 let victoria = 0;
+let pantallaBloqueo = false;
 
 let coordenadas = [
     {
@@ -69,7 +70,7 @@ function detectarInputs(e){
     
     if(!teclas.includes(e.key) && e.code !== 'Space'){return}
 
-    if(teclas.includes(e.key)){
+    if(teclas.includes(e.key) && pantallaBloqueo === false){
         if((direccion === 'ArrowRight' || direccion === 'd') && (e.key === 'ArrowLeft' || e.key === 'a') && colas){
             direccion = 'ArrowRight';
         }
@@ -374,6 +375,7 @@ function reinicio(e){
 function pausarJuego(e){
     if(pausa.textContent === 'II'){
         clearInterval(bucleIntervalo);
+        pantallaBloqueo = true;
         sonidos.musica.pause();
         pausa.textContent = '▶';
         pausa.style.backgroundColor = '#33ff33'
@@ -382,6 +384,7 @@ function pausarJuego(e){
     }
     if(pausa.textContent === '▶'){
         iniciarBucle();
+        pantallaBloqueo = true;
         sonidos.musica.play();
         pausa.textContent = 'II';
         pausa.style.backgroundColor = '#111111'
