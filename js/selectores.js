@@ -1,1 +1,17 @@
-
+export const serpiente = document.querySelector('.serpiente') || null;
+export const cabeza = document.querySelector('.cabeza') || null;
+export let fruta = document.querySelector('.manzana') || null;
+export const campo = document.querySelector('.campoJuego');
+export const campoPerdida = document.querySelector('.campoPerdido');
+export const campoVictoria = document.querySelector('.campoGanado');
+export const pausa = document.querySelector('.pausa');
+export const botonReinicio = document.querySelectorAll('.botonReinicio');
+export const pantalla = document.querySelector('.puntaje');
+export const record = document.querySelector('.record');
+export const muertes = document.querySelector('.muerte');
+export const victorias = document.querySelector('.victorias');
+export const selectorColor = document.querySelector('.selectorColor');
+export const comida = document.querySelector('.comida');
+export const nota = document.querySelector('.nota');
+export const imagenPerdido = document.querySelector('.imagenPerdido');
+export const btnDesplazamiento = document.querySelectorAll('.desplazamientos');
