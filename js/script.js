@@ -1,20 +1,5 @@
-const serpiente = document.querySelector('.serpiente') || null;
-const cabeza = document.querySelector('.cabeza') || null;
-let fruta = document.querySelector('.manzana') || null;
-const campo = document.querySelector('.campoJuego');
-const campoPerdida = document.querySelector('.campoPerdido');
-const campoVictoria = document.querySelector('.campoGanado');
-const pausa = document.querySelector('.pausa');
-const botonReinicio = document.querySelectorAll('.botonReinicio');
-const pantalla = document.querySelector('.puntaje');
-const record = document.querySelector('.record');
-const muertes = document.querySelector('.muerte');
-const victorias = document.querySelector('.victorias');
-const selectorColor = document.querySelector('.selectorColor');
-const comida = document.querySelector('.comida');
-const nota = document.querySelector('.nota');
-const imagenPerdido = document.querySelector('.imagenPerdido');
-const btnDesplazamiento = document.querySelectorAll('.desplazamientos');
+inport { serpiente, cabeza, fruta, campo, campoPerdida, campoVictoria, pausa, botonReinicio, 
+pantalla, record, muertes, victorias, selectorColor, comida, nota, imagenPerdido, btnDesplazamiento } from './js/selectores.js'
 
 const sonidos = {
     musica: new Audio('./audio/juego.mp3'),
