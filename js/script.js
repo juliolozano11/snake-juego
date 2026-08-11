@@ -1,4 +1,4 @@
-inport { serpiente, cabeza, fruta, campo, campoPerdida, campoVictoria, pausa, botonReinicio,  pantalla, record, muertes, victorias, selectorColor, comida, nota, imagenPerdido, btnDesplazamiento } from './selectores.js'
+import { serpiente, cabeza, fruta, campo, campoPerdida, campoVictoria, pausa, botonReinicio,  pantalla, record, muertes, victorias, selectorColor, comida, nota, imagenPerdido, btnDesplazamiento } from './selectores.js'
 
 const sonidos = {
     musica: new Audio('./audio/juego.mp3'),
