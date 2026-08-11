@@ -1,4 +1,5 @@
-import { serpiente, cabeza, fruta, campo, campoPerdida, campoVictoria, pausa, botonReinicio,  pantalla, record, muertes, victorias, selectorColor, comida, nota, imagenPerdido, btnDesplazamiento } from './selectores.js'
+import { serpiente, cabeza, campo, campoPerdida, campoVictoria, pausa, botonReinicio,  pantalla, record, muertes, victorias, selectorColor, comida, nota, imagenPerdido, btnDesplazamiento } from './selectores.js'
+let fruta = document.querySelector('.manzana') || null;
 
 const sonidos = {
     musica: new Audio('./audio/juego.mp3'),
@@ -353,7 +354,7 @@ function reinicio(e){
     cabeza.style.top = `${0}px`;
     cabeza.style.left = `${0}px`;
     
-    if(Number(pantalla.value > Number(record.value))){
+    if(Number(pantalla.value) > Number(record.value)){
         let valor = Number(pantalla.value)
         record.value = valor;
         agregarLocalStorage('recordLS' , valor);
