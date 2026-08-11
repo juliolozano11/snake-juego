@@ -384,7 +384,7 @@ function pausarJuego(e){
     }
     if(pausa.textContent === '▶'){
         iniciarBucle();
-        pantallaBloqueo = true;
+        pantallaBloqueo = false;
         sonidos.musica.play();
         pausa.textContent = 'II';
         pausa.style.backgroundColor = '#111111'
@@ -529,7 +529,7 @@ function detectarInputsCelular(e){
 
     const teclas = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'];
     
-    if(teclas.includes(e.target.id)){
+    if(teclas.includes(e.target.id) && pantallaBloqueo === false){
         if(direccion === 'ArrowRight'  && e.target.id === 'ArrowLeft' && colas){
             direccion = 'ArrowRight';
         }
