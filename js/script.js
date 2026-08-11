@@ -221,6 +221,9 @@ function detectarFruta(){
         fruta = document.createElement('div');
         fruta.classList.add('manzana');
         fruta.textContent = `${elementoFruta}`;
+
+        let posicionOcupada;
+        
         do{
             posicionOcupada = false;
             posicionX = Math.floor((Math.random() * (campo.clientWidth - area)) / area) * area;
